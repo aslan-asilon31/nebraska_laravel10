@@ -277,16 +277,6 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100 max-h-60" src="{{ $product->image }}" alt="" >
                         <div class="product-action">
-                            <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" value="{{ $product->id }}" name="id">
-                                <input type="hidden" value="{{ $product->name }}" name="name">
-                                <input type="hidden" value="{{ $product->price }}" name="price">
-                                <input type="hidden" value="{{ $product->image }}"  name="image">
-                                <input type="hidden" value="1" name="quantity">
-                                {{-- <button class="px-4 py-1.5 text-white text-sm bg-blue-800 rounded">Add To Cart</button> --}}
-                                <button class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></button>
-                            </form>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
@@ -304,6 +294,16 @@
                             <small class="far fa-star text-primary mr-1"></small>
                             <small class="far fa-star text-primary mr-1"></small>
                             <small>(99)</small>
+                            <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" value="{{ $product->id }}" name="id">
+                                <input type="hidden" value="{{ $product->name }}" name="name">
+                                <input type="hidden" value="{{ $product->price }}" name="price">
+                                <input type="hidden" value="{{ $product->image }}"  name="image">
+                                <input type="hidden" value="1" name="quantity">
+                                {{-- <button class="px-4 py-1.5 text-white text-sm bg-blue-800 rounded">Add To Cart</button> --}}
+                                <button class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>

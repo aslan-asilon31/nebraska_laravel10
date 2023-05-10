@@ -22,7 +22,7 @@
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('frontend/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-
+    @stack('css')
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 </head>
@@ -58,6 +58,8 @@
                             @else
                                 You are not logged in.
                             </button>
+                            {{-- <div class="" name="user_name" value="{{ Auth::user()->name }}" hidden></div> --}}
+
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="/login" type="button" class="dropdown-item" type="button">Sign in</a>
                                 <a href="/register" class="dropdown-item" type="button">Sign up</a>
@@ -154,15 +156,15 @@
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
-                        <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
-                        <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
+                        <span class="h1 text-uppercase text-dark bg-light px-2">Nebra</span>
+                        <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Ska</span>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
+                            <a href="/" class="nav-item nav-link active">Home</a>
                             <a href="shop.html" class="nav-item nav-link">Shop</a>
                             <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
@@ -281,6 +283,7 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('frontend/js/main.js')}}"></script>
+    @stack('js')
 </body>
 
 </html>

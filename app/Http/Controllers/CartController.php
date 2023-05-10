@@ -16,8 +16,10 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
+        // dd($request);
         \Cart::add([
             'id' => $request->id,
+            // 'user_name' => Auth::user()->name,
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
@@ -25,6 +27,8 @@ class CartController extends Controller
                 'image' => $request->image,
             )
         ]);
+
+
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
         return redirect()->route('cart.list');
@@ -62,5 +66,41 @@ class CartController extends Controller
         session()->flash('success', 'All Item Cart Clear Successfully !');
 
         return redirect()->route('cart.list');
+    }
+
+    public function checkout( Request $request)
+    {
+        // $this->validate($request,[
+
+        // ])
+        
+        // $request->request->add(['total_price' => $request->qty * 100000, 'status' => 'unpaid' ]);
+        // // dd($request);
+        // $order = Order::create($request->all());
+
+        
+        // // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => 1,
+                'gross_amount' => 100,
+            ),
+            'customer_details' => array(
+                'name' => $request->name,
+                'phone' => $request->phone,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        return view('visitor.checkout', compact('snapToken'));
+        // return view('visitor.checkout');
     }
 }

@@ -1,6 +1,7 @@
 @extends('../layouts/frontend')
 
 @section('content')
+
     <!-- Breadcrumb Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
@@ -31,8 +32,8 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
+                        @foreach ($cartItems as $item)
                         <tr>
-                            @foreach ($cartItems as $item)
                             <td class="align-middle"><img src="{{ $item->attributes->image }}" alt="" style="width: 50px;"> {{ $item->name }}</td>
                             <td class="align-middle">Rp {{ $item->price }}</td>
                             <td class="align-middle">
@@ -46,16 +47,16 @@
                                   </form>
 
                             </td>
-                            @endforeach
                             <td class="align-middle">Rp {{ Cart::getTotal() }}</td>
                             {{-- <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td> --}}
                             <td>                          
                                 <form action="{{ route('cart.clear') }}" method="POST">
-                                @csrf
-                                <button class="btn btn-danger"> <i class="fa fa-trash"></i> </button>
-                              </form>
+                                    @csrf
+                                    <button class="btn btn-danger"> <i class="fa fa-trash"></i> </button>
+                                </form>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -85,7 +86,7 @@
                             <h5>Total</h5>
                             <h5>Rp {{ Cart::getTotal() }}</h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                        <a href="{{ route('checkout') }}" type="" class="btn btn-block btn-primary font-weight-bold my-3 py-3" id="pay-button">Proceed To Checkout</a>
                     </div>
                 </div>
             </div>
@@ -93,5 +94,30 @@
     </div>
     <!-- Cart End -->
 
+    {{-- <script type="text/javascript">
+        // For example trigger on button clicked, or any time you need
+        var payButton = document.getElementById('pay-button');
+        payButton.addEventListener('click', function () {
+          // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+          window.snap.pay('{{ $snapToken }}', {
+            onSuccess: function(result){
+              /* You may add your own implementation here */
+              alert("payment success!"); console.log(result);
+            },
+            onPending: function(result){
+              /* You may add your own implementation here */
+              alert("wating your payment!"); console.log(result);
+            },
+            onError: function(result){
+              /* You may add your own implementation here */
+              alert("payment failed!"); console.log(result);
+            },
+            onClose: function(){
+              /* You may add your own implementation here */
+              alert('you closed the popup without finishing the payment');
+            }
+          })
+        });
+    </script> --}}
 
 @endsection

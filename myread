@@ -1,0 +1,9 @@
+===== when cannot push to github 
+after generate new token
+git remote set-url origin https://<token>@github.com/<username>/<repo>
+
+=== add to cart
+https://larainfo.com/blogs/laravel-9-shopping-add-to-cart-tutorial-example
+
+=======add midtrans payment gateway
+https://www.youtube.com/watch?v=9u7To5v0Q4k&list=PLBs-bxLCgCx8RnTNzu2QYvzQMuskmID1A&index=2

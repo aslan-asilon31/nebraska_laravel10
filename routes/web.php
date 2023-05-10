@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -25,7 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // Route::resource('/products', ProductController::class);
     // Route::get('/cart', function () {
     //     return view('visitor.cart');
     // });
@@ -34,9 +34,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
     Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
     Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
-    
+    Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
+
     Route::get('products', [ProductController::class, 'productList'])->name('products.list');
 });
+
+    Route::get('/', [ProductController::class, 'productList']);
+
+    // Route::post('/checkout',[OrderController::class, 'checkout']);
+
 
 
 
