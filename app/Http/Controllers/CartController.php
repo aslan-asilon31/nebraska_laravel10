@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Darryldecode\Cart\Facades\CartFacade as Cart;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -70,14 +72,16 @@ class CartController extends Controller
 
     public function checkout( Request $request)
     {
+        dd($request);
+        $cartItems = \Cart::getContent();
+        // dd($cartItems);
         // $this->validate($request,[
 
         // ])
         
         // $request->request->add(['total_price' => $request->qty * 100000, 'status' => 'unpaid' ]);
-        // // dd($request);
-        // $order = Order::create($request->all());
-
+        $order = Order::create($request->all());
+        // dd($order);
         
         // // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');

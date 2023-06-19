@@ -86,7 +86,7 @@
                             <h5>Total</h5>
                             <h5>Rp {{ Cart::getTotal() }}</h5>
                         </div>
-                        <a href="{{ route('checkout') }}" type="" class="btn btn-block btn-primary font-weight-bold my-3 py-3" id="pay-button">Proceed To Checkout</a>
+                        <a href="{{ route('checkout',$item->id) }}" type="" class="btn btn-block btn-primary font-weight-bold my-3 py-3" id="pay-button">Proceed To Checkout</a>
                     </div>
                 </div>
             </div>

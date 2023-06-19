@@ -16,8 +16,8 @@ class OrderController extends Controller
         // $this->validate($request,[
 
         // ])
-        // dd($request);
         $request->request->add(['total_price' => $request->qty * 100000, 'status' => 'unpaid' ]);
+        dd($request);
         $order = Order::create($request->all());
 
         
