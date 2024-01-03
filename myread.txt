@@ -7,3 +7,13 @@ https://larainfo.com/blogs/laravel-9-shopping-add-to-cart-tutorial-example
 
 =======add midtrans payment gateway
 https://www.youtube.com/watch?v=9u7To5v0Q4k&list=PLBs-bxLCgCx8RnTNzu2QYvzQMuskmID1A&index=2
+
+
+===================== link to register :
+https://console.cloud.google.com/apis/credentials/oauthclient
+
+https://developers.facebook.com/apps/745515020213715/settings/basic/
+
+https://developer.twitter.com/en/portal/projects/1742378561628172288/
+
+https://github.com/settings/applications/
